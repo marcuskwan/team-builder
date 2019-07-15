@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TeamForm from "./components/TeamForm";
 import Team from "./components/Team";
 import "./App.css";
+import { Container, Row, Col } from "shards-react";
 
 function App() {
   const [team, setTeam] = useState([]);
@@ -17,12 +18,22 @@ function App() {
     );
   return (
     <div className="App">
-      <TeamForm
-        addNewMember={addNewMember}
-        memberToEdit={memberToEdit}
-        editMember={editMember}
-      />
-      <Team team={team} setMemberToEdit={setMemberToEdit} />
+      <Container>
+        <Row>
+          <Col>
+            <TeamForm
+              addNewMember={addNewMember}
+              memberToEdit={memberToEdit}
+              editMember={editMember}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Team team={team} setMemberToEdit={setMemberToEdit} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

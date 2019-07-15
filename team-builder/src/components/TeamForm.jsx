@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Form, FormInput, FormGroup, FormSelect, Button } from "shards-react";
 import PropTypes from "prop-types";
 const uuidv4 = require("uuid/v4");
 
@@ -36,36 +37,46 @@ export default function TeamForm({ addNewMember, memberToEdit, editMember }) {
   useEffect(() => setMemberData(memberToEdit), [memberToEdit]);
   return (
     <div className="team-form">
-      <form onSubmit={handleAdd}>
+      <Form onSubmit={handleAdd}>
         <h2>Add New Member</h2>
-        <input
+        <FormGroup>
+          <FormInput
+            onChange={handleChanges}
+            name="name"
+            value={memberData.name}
+            placeholder="name"
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormInput
+            onChange={handleChanges}
+            name="email"
+            value={memberData.email}
+            placeholder="email"
+            type="email"
+            required
+          />
+        </FormGroup>
+
+        <FormSelect
           onChange={handleChanges}
-          name="name"
-          value={memberData.name}
-          placeholder="name"
-          required
-        />
-        <input
-          onChange={handleChanges}
-          name="email"
-          value={memberData.email}
-          placeholder="email"
-          type="email"
-          required
-        />
-        <select onChange={handleChanges} name="role" value={memberData.role}>
+          name="role"
+          value={memberData.role}>
           <option value="" selected disabled hidden>
             Roles
           </option>
           <option value="Frontend Engineer">Frontend Engineer</option>
           <option value="Backend Engineer">Backend engineer</option>
           <option value="UI Designer">UI Designer</option>
-        </select>
-        {memberData.role && <button>Submit</button>}
+        </FormSelect>
+        {memberData.role && <Button>Submit</Button>}
         {memberData.role && memberToEdit && (
-          <button onClick={handleEdit}>Update</button>
+          <Button onClick={handleEdit} theme="info">
+            Update
+          </Button>
         )}
-      </form>
+      </Form>
     </div>
   );
 }
