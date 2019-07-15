@@ -5,14 +5,18 @@ import "./App.css";
 
 function App() {
   const [team, setTeam] = useState([]);
-  const addNewMember = (event, newMember) => {
-    event.preventDefault();
+  const [memberToEdit, setMemberToEdit] = useState({});
+  const addNewMember = newMember => {
     setTeam([...team, newMember]);
   };
   return (
     <div className="App">
-      <TeamForm addNewMember={addNewMember} />
-      <Team team={team} />
+      <TeamForm
+        addNewMember={addNewMember}
+        setMemberToEdit={setMemberToEdit}
+        memberToEdit={memberToEdit}
+      />
+      <Team team={team} setMemberToEdit={setMemberToEdit} />
     </div>
   );
 }

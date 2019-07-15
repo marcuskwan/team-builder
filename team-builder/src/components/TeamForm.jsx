@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-export default function TeamForm({ addNewMember }) {
+export default function TeamForm({ addNewMember, memberToEdit }) {
   const [memberData, setMemberData] = useState({
     name: "",
     email: "",
@@ -11,10 +11,19 @@ export default function TeamForm({ addNewMember }) {
     event.preventDefault();
     setMemberData({ ...memberData, [event.target.name]: event.target.value });
   };
-
+  const handleAdd = event => {
+    event.preventDefault();
+    addNewMember(memberData);
+    setMemberData({
+      name: "",
+      email: "",
+      role: "",
+    });
+  };
+  useEffect(() => setMemberData(memberToEdit), [memberToEdit]);
   return (
     <div className="team-form">
-      <form onSubmit={event => addNewMember(event, memberData)}>
+      <form onSubmit={handleAdd}>
         <h2>Add New Member</h2>
         <input
           onChange={handleChanges}
@@ -47,4 +56,5 @@ export default function TeamForm({ addNewMember }) {
 
 TeamForm.propTypes = {
   addNewMember: PropTypes.func,
+  memberToEdit: PropTypes.object,
 };

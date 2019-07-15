@@ -2,11 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import TeamMember from "./TeamMember";
 
-function Team({ team }) {
+function Team({ team, setMemberToEdit }) {
   return (
     <div className="team">
       {team.map(teamMember => (
-        <TeamMember teamMember={teamMember} />
+        <TeamMember
+          teamMember={teamMember}
+          setMemberToEdit={setMemberToEdit}
+          key={teamMember.name}
+        />
       ))}
     </div>
   );
