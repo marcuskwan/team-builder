@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+const uuidv4 = require("uuid/v4");
 
-export default function TeamForm({ addNewMember, memberToEdit }) {
+export default function TeamForm({ addNewMember, memberToEdit, editMember }) {
   const [memberData, setMemberData] = useState({
     name: "",
     email: "",
     role: "",
+    id: uuidv4(),
   });
   const handleChanges = event => {
     event.preventDefault();
@@ -18,6 +20,17 @@ export default function TeamForm({ addNewMember, memberToEdit }) {
       name: "",
       email: "",
       role: "",
+      id: uuidv4(),
+    });
+  };
+  const handleEdit = event => {
+    event.preventDefault();
+    editMember(memberData);
+    setMemberData({
+      name: "",
+      email: "",
+      role: "",
+      id: uuidv4(),
     });
   };
   useEffect(() => setMemberData(memberToEdit), [memberToEdit]);
@@ -49,12 +62,16 @@ export default function TeamForm({ addNewMember, memberToEdit }) {
           <option value="UI Designer">UI Designer</option>
         </select>
         {memberData.role && <button>Submit</button>}
+        {memberData.role && memberToEdit && (
+          <button onClick={handleEdit}>Update</button>
+        )}
       </form>
     </div>
   );
 }
 
 TeamForm.propTypes = {
-  addNewMember: PropTypes.func,
   memberToEdit: PropTypes.object,
+  addNewMember: PropTypes.func,
+  editMember: PropTypes.func,
 };

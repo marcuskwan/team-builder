@@ -6,15 +6,21 @@ import "./App.css";
 function App() {
   const [team, setTeam] = useState([]);
   const [memberToEdit, setMemberToEdit] = useState({});
-  const addNewMember = newMember => {
-    setTeam([...team, newMember]);
-  };
+  const [isEditing, setIsEditing] = useState(false);
+  const addNewMember = newMember => setTeam([...team, newMember]);
+
+  const editMember = editingMember =>
+    setTeam(
+      team.map(member =>
+        member.id === editingMember.id ? editingMember : member,
+      ),
+    );
   return (
     <div className="App">
       <TeamForm
         addNewMember={addNewMember}
-        setMemberToEdit={setMemberToEdit}
         memberToEdit={memberToEdit}
+        editMember={editMember}
       />
       <Team team={team} setMemberToEdit={setMemberToEdit} />
     </div>
