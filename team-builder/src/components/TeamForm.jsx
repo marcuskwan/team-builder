@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-export default function TeamForm(props) {
+export default function TeamForm({ addNewMember }) {
   const [memberData, setMemberData] = useState({
     name: "",
     email: "",
@@ -11,9 +11,11 @@ export default function TeamForm(props) {
     event.preventDefault();
     setMemberData({ ...memberData, [event.target.name]: event.target.value });
   };
+
   return (
     <div className="team-form">
-      <form>
+      <form onSubmit={event => addNewMember(event, memberData)}>
+        <h2>Add New Member</h2>
         <input
           onChange={handleChanges}
           name="name"
@@ -29,17 +31,20 @@ export default function TeamForm(props) {
           type="email"
           required
         />
+        <select onChange={handleChanges} name="role" value={memberData.role}>
+          <option value="" selected disabled hidden>
+            Roles
+          </option>
+          <option value="Frontend Engineer">Frontend Engineer</option>
+          <option value="Backend Engineer">Backend engineer</option>
+          <option value="UI Designer">UI Designer</option>
+        </select>
+        {memberData.role && <button>Submit</button>}
       </form>
-      <select onChange={handleChanges} name="role" value={memberData.role}>
-        <option value="role">Roles</option>
-        <option value="Frontend Engineer">Frontend Engineer</option>
-        <option value="Backend Engineer">Backend engineer</option>
-        <option value="UI Designer">UI Designer</option>
-      </select>
     </div>
   );
 }
 
 TeamForm.propTypes = {
-  setTeam: PropTypes.func,
+  addNewMember: PropTypes.func,
 };

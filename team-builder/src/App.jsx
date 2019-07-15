@@ -5,10 +5,13 @@ import "./App.css";
 
 function App() {
   const [team, setTeam] = useState([]);
+  const addNewMember = (event, newMember) => {
+    event.preventDefault();
+    setTeam([...team, newMember]);
+  };
   return (
     <div className="App">
-      hi
-      <TeamForm setTeam={setTeam} />
+      <TeamForm addNewMember={addNewMember} />
       <Team team={team} />
     </div>
   );
