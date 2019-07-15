@@ -7,16 +7,22 @@ export default function TeamForm(props) {
     email: "",
     role: "",
   });
+  const handleChanges = event => {
+    event.preventDefault();
+    setMemberData({ ...memberData, [event.target.name]: event.target.value });
+  };
   return (
     <div className="team-form">
       <form>
         <input
+          onChange={handleChanges}
           name="name"
           value={memberData.name}
           placeholder="name"
           required
         />
         <input
+          onChange={handleChanges}
           name="email"
           value={memberData.email}
           placeholder="email"
@@ -24,7 +30,7 @@ export default function TeamForm(props) {
           required
         />
       </form>
-      <select onChange={() => {}} value={{}}>
+      <select onChange={handleChanges} name="role" value={memberData.role}>
         <option value="role">Roles</option>
         <option value="Frontend Engineer">Frontend Engineer</option>
         <option value="Backend Engineer">Backend engineer</option>
@@ -34,4 +40,6 @@ export default function TeamForm(props) {
   );
 }
 
-TeamForm.propTypes = {};
+TeamForm.propTypes = {
+  setTeam: PropTypes.func,
+};
