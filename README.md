@@ -16,50 +16,50 @@ In this project you'll build an app that will keep track of memebers of a team. 
 
 ## Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd american-football-scoreboard`
-- [ ] Download project dependencies by running one of these two commands `yarn` or `npm install`
-- [ ] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [x ] Create a forked copy of this project.
+- [ x] Add your team lead as collaborator on Github.
+- [x ] Clone your OWN version of the repository in your terminal
+- [x ] CD into the project base directory `cd american-football-scoreboard`
+- [x ] Download project dependencies by running one of these two commands `yarn` or `npm install`
+- [x ] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
+- [x ] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [x ] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete by merging the branch back into master.
-- [ ] Do your magic!
+- [x ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
+- [x ] Add your team lead as a reviewer on the pull-request
+- [x ] Your team lead will count the project as complete by merging the branch back into master.
+- [x ] Do your magic!
 
 ## Minimum Viable Product
 
-- [ ] Render a list of team members from state
-- [ ] Build a form to add a new member to the list of members
-- [ ] Add the functionality to edit team members
+- [ x] Render a list of team members from state
+- [x ] Build a form to add a new member to the list of members
+- [x ] Add the functionality to edit team members
 
 ### STEP 1 - Setup your state
 
-- Import the `useState` hook
+x- Import the `useState` hook
 
-- Give the state variable you just declared a default value. You will need to keep track of a list of team members and each team member will have several key/value pairs associated with them.
+x- Give the state variable you just declared a default value. You will need to keep track of a list of team members and each team member will have several key/value pairs associated with them.
 
-- Render your list of team members
+x- Render your list of team members
 
 ### STEP 2 - Build your form
 
-- In `Form.js` build out your markup
-- Build inputs for `name`, `email` and `role` (backend engineer, frontend engineer, designer, etc. Use your imagination)
-- Import the useState hook and utilize what we learned about two-way data binding
-- Render your `Form` component in `App` and pass a setter method (the `set_____` method from your team members state in `App`) down to it so you can add team members to your state.
+x- In `Form.js` build out your markup
+x- Build inputs for `name`, `email` and `role` (backend engineer, frontend engineer, designer, etc. Use your imagination)
+x- Import the useState hook and utilize what we learned about two-way data binding
+x- Render your `Form` component in `App` and pass a setter method (the `set_____` method from your team members state in `App`) down to it so you can add team members to your state.
 
 ### STEP 3 - Add the edit functionality
 
 Next we're going to reuse the `Form` component to edit team members
 
 **Get App.js ready for editing members**
-- Add an edit button, or an edit icon next to each member you are rendering. When the button/icon is clicked, we want to set that member to a state property in `App` called `memberToEdit`. The function to do this should live in `App`, even if the button/icon invoking it are in a different component. Just pass the function down as a prop.
+x- Add an edit button, or an edit icon next to each member you are rendering. When the button/icon is clicked, we want to set that member to a state property in `App` called `memberToEdit`. The function to do this should live in `App`, even if the button/icon invoking it are in a different component. Just pass the function down as a prop.
 
 **Get Form.js ready to edit members**
 - Pass `memberToEdit` down to `Form.js`
@@ -67,11 +67,11 @@ Next we're going to reuse the `Form` component to edit team members
 
 The flow for editing is hard to conceptualize. It should go something like this:
 
-1. Our user clicks the `Edit` button/icon to start editing a team member
-1. A function in App is invoked that sets the clicked member to `memberToEdit` on state
-1. `Form.js` is receiving `memberToEdit` as a prop, and if that prop changes, the effect we built will set that object to state and populate the form with that member's info
-1. The user updates the member info
-1. Uh... now what do we do with this new data? If we submit the form, it will just add a new member 😫. Never fear! We will fix this in the next section!
+x1. Our user clicks the `Edit` button/icon to start editing a team member
+x1. A function in App is invoked that sets the clicked member to `memberToEdit` on state
+x1. `Form.js` is receiving `memberToEdit` as a prop, and if that prop changes, the effect we built will set that object to state and populate the form with that member's info
+x1. The user updates the member info
+x1. Uh... now what do we do with this new data? If we submit the form, it will just add a new member 😫. Never fear! We will fix this in the next section!
 
 ### STEP 4 - Form submit
 
